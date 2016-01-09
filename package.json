@@ -1,0 +1,13 @@
+{
+  "name": "pqueue",
+  "description": "Priority queue",
+  "version": "0.0.1",
+  "keywords": [
+    "data-structure",
+    "data-structures",
+    "queue",
+    "binary",
+    "heap",
+    "binary heap"
+  ]
+}
