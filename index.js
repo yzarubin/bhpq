@@ -36,18 +36,3 @@ Object.defineProperty(PriorityQueue.prototype, 'length', {
   }
 });
 
-
-
-var q = new PriorityQueue();
-
-q.push(1)
-q.push(10)
-q.push(3)
-q.push(5)
-q.push(15)
-q.push(20)
-q.push(2)
-q.push(14)
-
-console.log(q)
-
