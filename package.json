@@ -9,5 +9,6 @@
     "binary",
     "heap",
     "binary heap"
-  ]
+  ],
+  "main": "./src/pqueue.js"
 }
