@@ -38,3 +38,13 @@ describe('pop', function() {
     assert(q.length === 0);
   });
 });
+
+describe('peek', function() {
+  it('should return the front of the queue', function() {
+    var q = new Pqueue();
+    assert(q.peek() === undefined);
+    q.push(3);
+    assert(q.peek() === 3);
+    assert(q.length === 1);
+  });
+});

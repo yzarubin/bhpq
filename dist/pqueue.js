@@ -39,7 +39,7 @@ PriorityQueue.prototype.push = function PriorityQueue$push(val) {
   this[i] = val;
   this._length = length + 1;
   return length + 1;
-}
+};
 
 PriorityQueue.prototype.pop = function PriorityQueue$pop() {
   var length = this._length;
@@ -61,7 +61,7 @@ PriorityQueue.prototype.pop = function PriorityQueue$pop() {
     // Set swapChild to otherChild if otherChild is of higher priority
     if ((otherChild < length) && this._compare(this._gp(this[otherChild]), this._gp(this[swapChild])))
       swapChild = otherChild;
-    
+
     // Break if the last element is of higher priority than its child
     if (this._compare(last, this[swapChild])) break;
 
@@ -73,7 +73,11 @@ PriorityQueue.prototype.pop = function PriorityQueue$pop() {
   this[length] = void 0;
   this._length = length;
   return highestPriorityElement;
-}
+};
+
+PriorityQueue.prototype.peek = function PriorityQueue$peek() {
+  return this[0];
+};
 
 Object.defineProperty(PriorityQueue.prototype, 'length', {
   get: function() {
