@@ -2,8 +2,9 @@
 
 function PriorityQueue(opts) {
   this._length = 0;
-  this._compare = opts && opts.maxFirst && PriorityQueue$maxFirst || PriorityQueue$minFirst;
+  this._compare = opts && opts.min && PriorityQueue$minFirst || PriorityQueue$maxFirst;
   this._gp = opts && opts.getPriority || PriorityQueue$getPriority;
+  this.queue = [];
 }
 
 // Returns true if a is higher priority than b
@@ -30,22 +31,22 @@ PriorityQueue.prototype.push = function PriorityQueue$push(val) {
     parent = (i - 1) >> 1;
 
     // Break if the parent is of higher priority
-    if (this._compare(this._gp(this[parent]), this._gp(val))) break;
+    if (this._compare(this._gp(this.queue[parent]), this._gp(val))) break;
 
     // Otherwise move the parent down
-    this[i] = this[parent];
+    this.queue[i] = this.queue[parent];
   }
 
-  this[i] = val;
+  this.queue[i] = val;
   this._length = length + 1;
   return length + 1;
 };
 
 PriorityQueue.prototype.pop = function PriorityQueue$pop() {
   var length = this._length;
-  var highestPriorityElement = this[0];
+  var highestPriorityElement = this.queue[0];
 
-  var last = this[--length];
+  var last = this.queue[--length];
   var swapChild, otherChild;
 
   for (var i = 0; 1; i = swapChild) {
@@ -59,24 +60,24 @@ PriorityQueue.prototype.pop = function PriorityQueue$pop() {
     otherChild = swapChild + 1;
 
     // Set swapChild to otherChild if otherChild is of higher priority
-    if ((otherChild < length) && this._compare(this._gp(this[otherChild]), this._gp(this[swapChild])))
+    if ((otherChild < length) && this._compare(this._gp(this.queue[otherChild]), this._gp(this.queue[swapChild])))
       swapChild = otherChild;
 
     // Break if the last element is of higher priority than its child
-    if (this._compare(last, this[swapChild])) break;
+    if (this._compare(last, this.queue[swapChild])) break;
 
     // Move the child up
-    this[i] = this[swapChild];
+    this.queue[i] = this.queue[swapChild];
   }
 
-  this[i] = last;
-  this[length] = void 0;
+  this.queue[i] = last;
+  this.queue[length] = void 0;
   this._length = length;
   return highestPriorityElement;
 };
 
 PriorityQueue.prototype.peek = function PriorityQueue$peek() {
-  return this[0];
+  return this.queue[0];
 };
 
 Object.defineProperty(PriorityQueue.prototype, 'length', {
