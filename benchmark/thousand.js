@@ -13,56 +13,53 @@ const jsPriorityQueue = new (require('js-priority-queue'))({ comparator: functio
 const priorityHeapQueue = new (require('priority-heap-queue'))();
 const pqueue = new (require('pqueue'))();
 
-var size = 1000;
+var size = 10000;
 var randInt;
+var arr = [];
 
-while (--size) {
-  var randInt = getRandomInt(0, 1000);
-  bpqueue.push(randInt);
-  priorityQueueJs.enq(randInt);
-  queuePriority.push(randInt);
-  jsPriorityQueue.queue(randInt);
-  pqueue.push(randInt);
+
+for (var i = 0; i < size; i++) {
+  arr.push(getRandomInt(10000000, 0))
 }
 
 var suite = new Benchmark.Suite();
 
 suite
 .add('bpqueue', function(){
-  var a = bpqueue.pop();
-  var b = bpqueue.pop();
-  var c = bpqueue.pop();
+  for (var i = 0; i < size; i++) {
+    bpqueue.push(arr[i]);
+  }
 
-  bpqueue.push(a);
-  bpqueue.push(b);
-  bpqueue.push(c);
+  for (var i = 0; i < size; i++) {
+    var x = bpqueue.pop();
+  }
 })
 .add('priorityqueuejs', function(){
-  var a = priorityQueueJs.deq();
-  var b = priorityQueueJs.deq();
-  var c = priorityQueueJs.deq();
+  for (var i = 0; i < size; i++) {
+    priorityQueueJs.enq(arr[i]);
+  }
 
-  priorityQueueJs.enq(a);
-  priorityQueueJs.enq(b);
-  priorityQueueJs.enq(c);
+  for (var i = 0; i < size; i++) {
+    priorityQueueJs.deq();
+  }
 })
 .add('queue-priority', function(){
-  var a = queuePriority.pop();
-  var b = queuePriority.pop();
-  var c = queuePriority.pop();
+  for (var i = 0; i < size; i++) {
+    queuePriority.push(arr[i]);
+  }
 
-  queuePriority.push(a);
-  queuePriority.push(b);
-  queuePriority.push(c);
+  for (var i = 0; i < size; i++) {
+    queuePriority.pop();
+  }
 })
 .add('js-priority-queue', function(){
-  var a = jsPriorityQueue.dequeue();
-  var b = jsPriorityQueue.dequeue();
-  var c = jsPriorityQueue.dequeue();
+  for (var i = 0; i < size; i++) {
+    jsPriorityQueue.queue(arr[i]);
+  }
 
-  jsPriorityQueue.queue(a);
-  jsPriorityQueue.queue(b);
-  jsPriorityQueue.queue(c);
+  for (var i = 0; i < size; i++) {
+    var x = jsPriorityQueue.dequeue();
+  }
 })
 /*
 .add('priority-heap-queue', function(){
@@ -75,16 +72,16 @@ suite
   dequeBuiltIn.push(c);
 })
 */
-
 .add('pqueue', function(){
-  var a = pqueue.pop();
-  var b = pqueue.pop();
-  var c = pqueue.pop();
+  for (var i = 0; i < size; i++) {
+    pqueue.push(arr[i]);
+  }
 
-  pqueue.push(a);
-  pqueue.push(b);
-  pqueue.push(c);
+  for (var i = 0; i < size; i++) {
+    var x = pqueue.pop();
+  }
 })
+
 .on('cycle', function(e) {
   console.log('' + e.target);
 })
