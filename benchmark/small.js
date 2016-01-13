@@ -6,14 +6,14 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-const bpqueue = new (require('../dist/pqueue'))();
+const bhpq = new (require('../dist/bhpq'))();
 const priorityQueueJs = new (require('priorityqueuejs'))();
 const queuePriority = new (require('queue-priority'))();
 const jsPriorityQueue = new (require('js-priority-queue'))({ comparator: function(a, b) { return b - a; }});
 const priorityHeapQueue = new (require('priority-heap-queue'))();
 const pqueue = new (require('pqueue'))();
 
-var size = 10000;
+var size = 100;
 var randInt;
 var arr = [];
 
@@ -25,13 +25,13 @@ for (var i = 0; i < size; i++) {
 var suite = new Benchmark.Suite();
 
 suite
-.add('bpqueue', function(){
+.add('bhpq', function(){
   for (var i = 0; i < size; i++) {
-    bpqueue.push(arr[i]);
+    bhpq.push(arr[i]);
   }
 
   for (var i = 0; i < size; i++) {
-    var x = bpqueue.pop();
+    var x = bhpq.pop();
   }
 })
 .add('priorityqueuejs', function(){

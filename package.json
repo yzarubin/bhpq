@@ -1,8 +1,8 @@
 {
-  "name": "awdawd",
-  "description": "Priority queue",
+  "name": "bhpq",
+  "description": "Fast binary heap priority queue implementation in JavaScript",
   "version": "0.0.1",
-  "script": {
+  "scripts": {
     "test": "gulp test"
   },
   "keywords": [

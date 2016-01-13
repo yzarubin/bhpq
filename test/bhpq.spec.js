@@ -1,6 +1,6 @@
 'use strict';
 
-var Pqueue = require('../dist/pqueue');
+var Pqueue = require('../dist/bhpq');
 var assert = require('assert');
 
 describe('constructor', function() {
@@ -41,6 +41,8 @@ describe('min pop', function() {
     assert(q.pop() === 5);
     assert(q.pop() === 6);
     assert(q.pop() === 7);
+    assert(q.pop() === undefined);
+    assert(q.peek() === undefined);
     assert(q.length === 0);
   });
 });
@@ -69,15 +71,12 @@ describe('max pop', function() {
     q.push(1);
     q.push(0);
     q.push(7);
-    console.log(q)
     assert(q.pop() === 7);
     assert(q.pop() === 6);
     assert(q.pop() === 5);
     assert(q.pop() === 3);
     assert(q.pop() === 1);
-    console.log(q)
     assert(q.pop() === 0);
-    console.log(q)
     assert(q.length === 0);
   });
 });
