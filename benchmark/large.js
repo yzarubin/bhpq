@@ -8,11 +8,11 @@ function getRandomInt(min, max) {
 
 const bhpq = new (require('../dist/bhpq'))();
 const priorityQueueJs = new (require('priorityqueuejs'))();
-const queuePriority = new (require('queue-priority'))();
-const jsPriorityQueue = new (require('js-priority-queue'))({ comparator: function(a, b) { return b - a; }});
-const pqueue = new (require('pqueue'))();
+//const queuePriority = new (require('queue-priority'))();
+const jsPriorityQueue = new (require('js-priority-queue'))({ comparator: function(a, b) {return b - a;}});
+//const pqueue = new (require('pqueue'))();
 
-var size = 1e4;
+var size = 1e6;
 var randInt;
 var arr = [];
 
@@ -42,6 +42,8 @@ suite
     priorityQueueJs.deq();
   }
 })
+
+/* Too slow!
 .add('queue-priority', function(){
   for (var i = 0; i < size; i++) {
     queuePriority.push(arr[i]);
@@ -51,6 +53,7 @@ suite
     queuePriority.pop();
   }
 })
+*/
 .add('js-priority-queue', function(){
   for (var i = 0; i < size; i++) {
     jsPriorityQueue.queue(arr[i]);
@@ -60,6 +63,7 @@ suite
     var x = jsPriorityQueue.dequeue();
   }
 })
+/* Too slow!
 .add('pqueue', function(){
   for (var i = 0; i < size; i++) {
     pqueue.push(arr[i]);
@@ -69,6 +73,7 @@ suite
     var x = pqueue.pop();
   }
 })
+*/
 .on('cycle', function(e) {
   console.log('' + e.target);
 })
