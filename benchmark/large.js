@@ -10,7 +10,6 @@ const bhpq = new (require('../dist/bhpq'))();
 const priorityQueueJs = new (require('priorityqueuejs'))();
 const queuePriority = new (require('queue-priority'))();
 const jsPriorityQueue = new (require('js-priority-queue'))({ comparator: function(a, b) { return b - a; }});
-const priorityHeapQueue = new (require('priority-heap-queue'))();
 const pqueue = new (require('pqueue'))();
 
 var size = 1e4;
@@ -19,7 +18,7 @@ var arr = [];
 
 
 for (var i = 0; i < size; i++) {
-  arr.push(getRandomInt(10000000, 0))
+  arr.push(getRandomInt(10000000, 0));
 }
 
 var suite = new Benchmark.Suite();
@@ -61,17 +60,6 @@ suite
     var x = jsPriorityQueue.dequeue();
   }
 })
-/*
-.add('priority-heap-queue', function(){
-  var a = dequeBuiltIn.shift();
-  var b = dequeBuiltIn.shift();
-  var c = dequeBuiltIn.shift();
-
-  dequeBuiltIn.push(a);
-  dequeBuiltIn.push(b);
-  dequeBuiltIn.push(c);
-})
-*/
 .add('pqueue', function(){
   for (var i = 0; i < size; i++) {
     pqueue.push(arr[i]);
@@ -81,7 +69,6 @@ suite
     var x = pqueue.pop();
   }
 })
-
 .on('cycle', function(e) {
   console.log('' + e.target);
 })

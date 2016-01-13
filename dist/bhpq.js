@@ -48,7 +48,7 @@ Pqueue.prototype.pop = function Pqueue$pop() {
   var swapChild, otherChild;
 
   if (length > 0) {
-    for (var i = 0;; i = swapChild) {
+    for (var i = 0; ; i = swapChild) {
       // First child swap position
       swapChild = (i << 1) + 1;
 
@@ -71,7 +71,7 @@ Pqueue.prototype.pop = function Pqueue$pop() {
 
     this.queue[i] = last;
   }
-  
+
   return result;
 };
 
