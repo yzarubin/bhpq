@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/yzarubin/bhpq.svg?branch=master)](https://travis-ci.org/yzarubin/bhpq)
+
 #Introduction
 
 Fast binary heap [priority queue](https://en.wikipedia.org/wiki/Priority_queue) implementation in JavaScript. See [benchmarks](#benchmarks) for comparisons between different npm modules.
