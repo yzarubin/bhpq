@@ -1,7 +1,7 @@
 {
   "name": "bhpq",
   "description": "Fast binary heap priority queue implementation in JavaScript",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "test": "gulp test"
   },
@@ -28,8 +28,7 @@
     "url": "http://github.com/yzarubin/bhpq/issues"
   },
   "main": "./dist/bhpq.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "benchmark": "^2.0.0",
     "gulp": "^3.9.0",
