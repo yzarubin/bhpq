@@ -28,7 +28,7 @@ suite
     }
 
     for (var i = 0; i < size; i++) {
-      var x = bhpq.pop();
+      bhpq.pop();
     }
   })
   .add('priorityqueuejs', function(){
@@ -55,7 +55,7 @@ suite
     }
 
     for (var i = 0; i < size; i++) {
-      var x = jsPriorityQueue.dequeue();
+      jsPriorityQueue.dequeue();
     }
   })
   .on('cycle', function(e) {
