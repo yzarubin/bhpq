@@ -25,7 +25,12 @@ describe('constructor', function() {
       {k: 'c', v: 2}
     ];
 
-    var q = new Pqueue({min: true, getPriority: (o) => o.v}, data);
+    var opts = {
+      min: true,
+      getPriority: (o) => o.v
+    };
+
+    var q = new Pqueue(data, opts);
 
     assert(q.length === 3);
     assert(q.pop().k === 'a');

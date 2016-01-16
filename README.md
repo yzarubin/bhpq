@@ -17,15 +17,15 @@ Fast binary heap [priority queue](https://en.wikipedia.org/wiki/Priority_queue) 
 
 #API
 
-- [`new Pqueue([Object options],[Array items])`](#new-pqueueobject-options-array-items---pqueue)
+- [`new Pqueue([Array items],[Object options])`](#new-pqueueobject-options-array-items---pqueue)
 - [`push(dynamic item)`](#pushdynamic-item---int)
 - [`pop()`](#pop---dynamic)
 - [`peek()`](#peek---dynamic)
 - [`clear()`](#clear---void)
 
-#####`new Pqueue([Object options], [Array items])` -> `Pqueue`
+#####`new Pqueue([Array items], [Object options])` -> `Pqueue`
 
-Creates an empty max-heap priority queue. By default, the queue accepts numeric values and orders them from highest to lowest.
+Creates an empty max-heap priority queue. By default, the queue orders numeric values from highest to lowest. The constructor accepts an optional `items` array, which will be used to initialize the queue.
 
 ```js
 var pqueue = new Pqueue([2, 3, 1]);
@@ -36,8 +36,6 @@ pqueue.pop(); // 2
 The constructor accepts an optional `options` object with the following optional keys:
   - `min` - when `true`, the queue will be ordered such that lower values are given priority over higher values. Defaults to `false`.
   - `getPriority` - a function of the form `(*) -> Number` is used to map a queue item to a priority number. This is useful if you want to push anything other than numbers into the queue, and prioritize them using your own custom logic.
-
-The constructor also accepts an optional `items` array, which will be used to initialize the queue.
 
 E.g. using `min` and `getPriority` to create a queue of `Person` objects and order them from youngest to oldest.
 

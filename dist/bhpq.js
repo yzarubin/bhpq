@@ -5,25 +5,7 @@ function isArray(v) {
 }
 
 function isObject(v) {
-  var type = typeof v;
-  return !!v && (type == 'object' || type == 'function');
-}
-
-function Pqueue(opts, data) {
-  var initialData = isArray(data) && data || isArray(opts) && opts || [];
-  var opts = !isArray(opts) && isObject(opts) && opts || {};
-
-  this._compare = opts.min && Pqueue$minFirst || Pqueue$maxFirst;
-  this._gp = opts.getPriority || Pqueue$getPriority;
-  this._queue = [];
-
-  var initialDataLen = initialData.length;
-
-  if (initialDataLen > 0) {
-    for (var i = 0; i < initialDataLen; i++) {
-      this.push(initialData[i]);
-    }
-  }
+  return !!v && typeof v === 'object';
 }
 
 // Returns true if a is higher priority than b
@@ -36,15 +18,28 @@ function Pqueue$minFirst(a, b) {
   return a <= b;
 }
 
-// Identity
+// Identity function
 function Pqueue$getPriority(v) {
   return v;
 }
 
+function Pqueue(data, opts) {
+  var initialData = isArray(data) && data || [];
+  var opts = !isArray(opts) && isObject(opts) && opts ||
+             !isArray(data) && isObject(data) && data ||
+             {};
+
+  this._compare = opts.min && Pqueue$minFirst || Pqueue$maxFirst;
+  this._gp = opts.getPriority || Pqueue$getPriority;
+  this._queue = [];
+
+  this.pushArray(initialData);
+}
+
 Pqueue.prototype.push = function Pqueue$push(val) {
-  var parent;
+  var parent, length;
   this._queue.push(val);
-  var length = this._queue.length - 1;
+  length = this._queue.length - 1;
 
   // Starting from the end
   for (var i = length; i; i = parent) {
@@ -101,6 +96,14 @@ Pqueue.prototype.peek = function Pqueue$peek() {
 
 Pqueue.prototype.clear = function Pqueue$clear() {
   this._queue.length = 0;
+};
+
+Pqueue.prototype.pushArray = function Pqueue$pushArray(arr) {
+  var arrLen = arr.length;
+
+  for (var i = 0; i < arrLen; i++) {
+    this.push(arr[i]);
+  }
 };
 
 Object.defineProperty(Pqueue.prototype, 'length', {
