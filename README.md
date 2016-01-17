@@ -49,7 +49,7 @@ var people = [
   {name: 'Eve', age: 30}
 ];
 
-var pqueue = new Pqueue({min: true, getPriority: (o) => o.age}, people);
+var pqueue = new Pqueue(people, {min: true, getPriority: (o) => o.age});
 pqueue.pop() // {name: 'Alice', age: 15}
 pqueue.pop() // {name: 'Eve', age: 30}
 pqueue.pop() // {name: 'Bob', age: 40}
