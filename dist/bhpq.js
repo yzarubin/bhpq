@@ -65,7 +65,7 @@ Pqueue.prototype.pop = function Pqueue$pop() {
   if (length > 0) {
     for (var i = 0; ; i = swapChild) {
       // First child swap position
-      swapChild = (i << 1) + 1;
+      swapChild = i << 1 | 1;
 
       // Break if we reached the end
       if (swapChild >= length) break;
