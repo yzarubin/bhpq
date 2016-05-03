@@ -1,7 +1,7 @@
 {
   "name": "bhpq",
   "description": "Fast binary heap priority queue implementation in JavaScript",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "test": "gulp test"
   },
