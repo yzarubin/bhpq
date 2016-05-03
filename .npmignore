@@ -1,0 +1,9 @@
+.DS_Store
+test
+benchmark
+node_modules
+gulpfile.js
+npm-debug.log
+.gitignore
+.eslintrc
+.travis.yml
