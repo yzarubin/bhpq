@@ -7,7 +7,7 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-const bhpq = new (require('../dist/bhpq'))();
+const bhpq = new (require('../'))();
 const priorityQueueJs = new (require('priorityqueuejs'))();
 const queuePriority = new (require('queue-priority'))();
 const jsPriorityQueue = new (require('js-priority-queue'))({comparator: function(a, b) {return b - a;}});
