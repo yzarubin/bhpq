@@ -1,6 +1,6 @@
 'use strict';
 
-var Pqueue = require('../dist/bhpq');
+var Pqueue = require('../');
 var assert = require('assert');
 
 describe('constructor', function() {
