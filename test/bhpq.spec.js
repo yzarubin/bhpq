@@ -38,6 +38,47 @@ describe('constructor', function() {
     assert(q.pop().k === 'b');
     assert(q.pop() === undefined);
   });
+
+  it('should initialize the queue with array and custom comparator', function () {
+    var data = [
+      {k: 'a', x: 2, y: 2},
+      {k: 'b', x: 3, y: 1},
+      {k: 'c', x: 1, y: 2}
+    ];
+
+    var opts = {
+      comparator: (a, b) => a.y === b.y ? a.x - b.x : a.y - b.y
+    };
+
+    var q = new Pqueue(data, opts);
+
+    assert(q.length === 3);
+    assert(q.pop().k === 'a');
+    assert(q.pop().k === 'c');
+    assert(q.pop().k === 'b');
+    assert(q.pop() === undefined);
+  });
+
+  it('should initialize the queue with array, min=true and custom comparator', function () {
+    var data = [
+      {k: 'a', x: 2, y: 2},
+      {k: 'b', x: 3, y: 1},
+      {k: 'c', x: 1, y: 2}
+    ];
+
+    var opts = {
+      min: true,
+      comparator: (a, b) => a.y === b.y ? a.x - b.x : a.y - b.y
+    };
+
+    var q = new Pqueue(data, opts);
+
+    assert(q.length === 3);
+    assert(q.pop().k === 'b');
+    assert(q.pop().k === 'c');
+    assert(q.pop().k === 'a');
+    assert(q.pop() === undefined);
+  });
 });
 
 describe('min push', function() {
