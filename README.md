@@ -1,10 +1,10 @@
 [![Build Status](https://travis-ci.org/yzarubin/bhpq.svg?branch=master)](https://travis-ci.org/yzarubin/bhpq)
 
-#Introduction
+# Introduction
 
 Fast binary heap [priority queue](https://en.wikipedia.org/wiki/Priority_queue) implementation in JavaScript. See [benchmarks](#benchmarks) for comparisons between different npm modules.
 
-#Quick start
+# Quick start
 
     npm install bhpq
 
@@ -17,7 +17,7 @@ Fast binary heap [priority queue](https://en.wikipedia.org/wiki/Priority_queue) 
   pqueue.pop(); // 1
 ```
 
-#API
+# API
 
 - [`new Pqueue([Array items],[Object options])`](#new-pqueueobject-options-array-items---pqueue)
 - [`push(dynamic item)`](#pushdynamic-item---int)
@@ -25,7 +25,7 @@ Fast binary heap [priority queue](https://en.wikipedia.org/wiki/Priority_queue) 
 - [`peek()`](#peek---dynamic)
 - [`clear()`](#clear---void)
 
-#####`new Pqueue([Array items], [Object options])` -> `Pqueue`
+##### `new Pqueue([Array items], [Object options])` -> `Pqueue`
 
 Creates an empty max-heap priority queue. By default, the queue orders numeric values from highest to lowest. The constructor accepts an optional `items` array, which will be used to initialize the queue.
 
@@ -57,7 +57,7 @@ pqueue.pop() // {name: 'Bob', age: 40}
 
 <hr>
 
-#####`push(dynamic item)` -> `int`
+##### `push(dynamic item)` -> `int`
 
 Pushes an item into the queue and sorts it so that items with the highest priority are at the front of the queue. Completes in at worst `O(log n)` time. Returns the number of items currently in the queue.
 
@@ -70,7 +70,7 @@ pqueue.push(10);  // 3
 
 <hr>
 
-#####`pop()` -> `dynamic`
+##### `pop()` -> `dynamic`
 
 Removes and returns the highest priority item from queue, and resorts the queue in the process. Completes in at worst `O(log n)` time. Returns `undefined` if the queue is empty.
 
@@ -86,7 +86,7 @@ Note: To see what's at the front of the queue without removing it, use [`peek()`
 
 <hr>
 
-#####`peek()` -> `dynamic`
+##### `peek()` -> `dynamic`
 
 Returns the highest priority item without removing it from the queue. Completes in `O(1)` time. Returns `undefined` if the queue is empty.
 
@@ -98,7 +98,7 @@ pqueue.length; // 1
 
 <hr>
 
-#####`clear()` -> `void`
+##### `clear()` -> `void`
 
 Clears the queue.
 
@@ -111,7 +111,7 @@ pqueue.length; // 0
 
 <hr>
 
-#Benchmarks
+# Benchmarks
 
 ## Push and pop 100 items to/from the queue
 
