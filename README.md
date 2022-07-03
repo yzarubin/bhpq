@@ -38,6 +38,7 @@ pqueue.pop(); // 2
 The constructor accepts an optional `options` object with the following optional keys:
   - `min` - when `true`, the queue will be ordered such that lower values are given priority over higher values. Defaults to `false`.
   - `getPriority` - a function of the form `(*) -> Number` is used to map a queue item to a priority number. This is useful if you want to push anything other than numbers into the queue, and prioritize them using your own custom logic.
+  - `comparator` - a function of the form `(*, *) -> Number` is used to compare two queue items returning `> 0` if the first item priority is greater than the second item, `< 0` if the second item priority is greater than the first and `= 0` if they both items are of equal priority. **NOTE:** if this option is provided the `getPriority` option is ignored.
 
 E.g. using `min` and `getPriority` to create a queue of `Person` objects and order them from youngest to oldest.
 
@@ -126,4 +127,3 @@ pqueue.length; // 0
     priorityqueuejs   x 5.43 ops/sec ±0.89% (18 runs sampled)
     js-priority-queue x 5.27 ops/sec ±1.22% (18 runs sampled)
     queue-priority:   N/A (too slow)
-
